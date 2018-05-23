@@ -1,29 +1,25 @@
 require 'rubygems'
 require 'pry'
 
-class Fruit
-    attr_accessor :x, :y, :fruits
+class FruitRect
+    attr_accessor :x, :y
     
     def initialize
       @x = rand(SnakeGame::WIDTH / SnakeGame::TILE)
       @y = rand(SnakeGame::WIDTH / SnakeGame::TILE)
-
-      @fruits = {
-        morango: Gosu::Image.new("media/strawberry.png"),
-        cereja: Gosu::Image.new("media/cereja.png")
-      }
-      @image = @fruits.to_a[rand(@fruits.size)].last
     end
 
     def update
     end
 
     def draw
-        @image.draw(
-            @x * SnakeGame::TILE,
-            @y * SnakeGame::TILE,
-            0
-        )
+      Gosu.draw_rect(
+          @x * SnakeGame::TILE,
+          @y * SnakeGame::TILE,
+          SnakeGame::TILE - 1,
+          SnakeGame::TILE - 1,
+          Gosu::Color::RED
+      )
     end
 
     def regenerate
@@ -31,7 +27,6 @@ class Fruit
         # @y = (rand * SnakeGame::TILE).floor
         @x = rand(SnakeGame::WIDTH / SnakeGame::TILE)
         @y = rand(SnakeGame::HEIGHT / SnakeGame::TILE)
-        @image = @fruits.to_a[rand(@fruits.size)].last
     end
     
 

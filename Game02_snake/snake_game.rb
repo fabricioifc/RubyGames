@@ -1,6 +1,7 @@
 require 'gosu'
 require './snake'
 require './fruit'
+require './fruit_rect'
 
 class SnakeGame < Gosu::Window
   WIDTH, HEIGHT = 400, 400
@@ -14,6 +15,7 @@ class SnakeGame < Gosu::Window
 
     @snake = Snake.new
     @fruit = Fruit.new
+    # @fruit = FruitRect.new
   end
 
   def update
