@@ -5,11 +5,12 @@ require './fruit'
 class SnakeGame < Gosu::Window
   WIDTH, HEIGHT = 400, 400
   TILE = 10
+  VELOCITY = 1000/15
 
   WIDTH_IN_TILE = WIDTH/TILE
 
   def initialize
-    super WIDTH, HEIGHT, false, 1000/15
+    super WIDTH, HEIGHT, false, VELOCITY
 
     @snake = Snake.new
     @fruit = Fruit.new

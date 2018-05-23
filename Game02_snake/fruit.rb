@@ -1,8 +1,8 @@
 class Fruit
     attr_accessor :x, :y
     def initialize
-      @x = 15
-      @y = 15
+      @x = rand(SnakeGame::WIDTH / SnakeGame::TILE)
+      @y = rand(SnakeGame::WIDTH / SnakeGame::TILE)
     end
 
     def update
@@ -19,8 +19,10 @@ class Fruit
     end
 
     def regenerate
-        @x = (rand * SnakeGame::TILE).floor
-        @y = (rand * SnakeGame::TILE).floor
+        # @x = (rand * SnakeGame::TILE).floor
+        # @y = (rand * SnakeGame::TILE).floor
+        @x = rand(SnakeGame::WIDTH / SnakeGame::TILE)
+        @y = rand(SnakeGame::HEIGHT / SnakeGame::TILE)
     end
     
 
