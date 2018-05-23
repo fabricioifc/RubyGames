@@ -33,14 +33,14 @@ class Snake
     end
 
     def draw
-      @posicao.each do |x,y|
+      @posicao.each_with_index do |val,index|
         Gosu.draw_rect(
-          x * SnakeGame::TILE,
-          y * SnakeGame::TILE,
+          val.first * SnakeGame::TILE,
+          val.last * SnakeGame::TILE,
           SnakeGame::TILE - 1,
           SnakeGame::TILE - 1,
-          self.snake_color
-        ) 
+          self.snake_color(@posicao.size - 1 == index)
+        )
       end
     end
 
@@ -52,7 +52,8 @@ class Snake
       @tail = MIN_TAIL
     end
 
-    def snake_color
+    def snake_color(first)
+      return Gosu::Color::YELLOW if first
       return Gosu::Color::BLUE if @posicao.size > 5
       return Gosu::Color::GREEN
     end    
